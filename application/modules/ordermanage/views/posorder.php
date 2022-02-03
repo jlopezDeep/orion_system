@@ -1406,7 +1406,24 @@ foreach ($scan1 as $file) {
 </style>
 <script>
   function removeServiceUpdate() {
-    document.getElementById("service_charge").value = 0;
-    calculatetotal();
+    swal({
+        title: "DESEA ELIMINAR EL SERVICIO DE ESTA ORDEN?",
+        text: "TENGA EN CUENTA QUE SI LO HACE LOS PRODUCTOS NO MARCHADOS SERAN ENVIADOS",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#28a745",
+        confirmButtonText: "ELIMINAR",
+        cancelButtonText: "CANCELAR",
+        closeOnConfirm: true,
+        closeOnCancel: true
+      },
+      function(isConfirm) {
+        if (isConfirm) {
+          document.getElementById("service_charge").value = 0;
+          calculatetotal();
+        }
+
+      });
+
   }
 </script>
