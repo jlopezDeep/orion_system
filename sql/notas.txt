@@ -1,0 +1,1 @@
+Recordar configurar el autoincrement en journal.
