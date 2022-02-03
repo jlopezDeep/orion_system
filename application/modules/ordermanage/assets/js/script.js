@@ -706,6 +706,10 @@ function calculatetotal() {
     var tasa = $('#caltotal_tasa').val();
     $('#caltotal').text(sum);
     $('#caltotal_total').text((sum * tasa).toFixed(2));
+    if (sum == undefined) {
+        $('#caltotal').text(0);
+        $('#caltotal_total').text((0 * tasa).toFixed(2));
+    }
     /*var csrf = $('#csrfhashresarvation').val();
     $.ajax({
         type: "GET",
