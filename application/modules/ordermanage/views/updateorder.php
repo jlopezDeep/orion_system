@@ -670,9 +670,25 @@
                                 </tr>
                                 <tr>
                                     <script>
-                                        function removeService() {
-                                            document.getElementById("service_charge_update").value = "0";
-                                            sumcalculation(1);
+                                        function removeService(orderid) {
+                                            swal({
+                                                    title: "DESEA ELIMINAR EL SERVICIO DE ESTA ORDEN?",
+                                                    text: "TENGA EN CUENTA QUE SI LO HACE LOS PRODUCTOS NO MARCHADOS SERAN ENVIADOS",
+                                                    type: "warning",
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: "#28a745",
+                                                    confirmButtonText: "ELIMINAR",
+                                                    cancelButtonText: "CANCELAR",
+                                                    closeOnConfirm: true,
+                                                    closeOnCancel: true
+                                                },
+                                                function(isConfirm) {
+                                                    if (isConfirm) {
+                                                        document.getElementById("service_charge_update").value = 0;
+                                                        sumcalculation(1, orderid);
+                                                    }
+
+                                                });
                                         }
                                     </script>
                                     <td>
@@ -696,7 +712,7 @@
                                         } ?>
                                         <div class="col-sm-3 p-0">
 
-                                            <a id="remove_service_btn" style="margin-top:10px;font-weight: bold;cursor:pointer;color:red;" onclick="removeService();">ELIMINAR</a>
+                                            <a id="remove_service_btn" style="margin-top:10px;font-weight: bold;cursor:pointer;color:red;" onclick="removeService(<?php echo $orderinfo->order_id; ?>);">ELIMINAR</a>
                                         </div>
 
                                     </td>

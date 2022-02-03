@@ -728,7 +728,7 @@ function calculatetotal() {
 
 }
 
-function sumcalculation(id = null) {
+function sumcalculation(id = null, orderid = null) {
     var total_price = 0;
     var inv_dis = 0;
     var ser_chg = 0;
@@ -810,6 +810,19 @@ function sumcalculation(id = null) {
                 if (data.length == 0) {
                     postupdateorder_ajax(1);
                 }
+                var csrf = $('#csrfhashresarvation').val();
+                $.ajax({
+                    type: "GET",
+                    url: "updateProductListGrid/" + orderid,
+                    success: function(data) {
+                        //alert("actualizo");
+                        $('#updatefoodlist').html(data);
+                        //$('#orginattotal_jose_ajuste').type = "text";
+                        //alert(tgtotal);
+                        //postupdateorder_ajax(1);
+                        document.getElementById('product-list-update').scrollTop = document.getElementById('product-list-update').scrollHeight;
+                    }
+                });
             }
         });
     } else {

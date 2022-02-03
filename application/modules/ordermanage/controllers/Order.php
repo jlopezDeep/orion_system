@@ -632,6 +632,21 @@ class Order extends MX_Controller
 		$data['page']   = "updateorderlist";
 		$this->load->view('ordermanage/updateorderlist', $data);
 	}
+
+	public function updateProductListGrid($orderid)//JOSE
+	{
+		$settinginfo = $this->order_model->settinginfo();
+		$data['settinginfo'] = $settinginfo;
+		$data['orderinfo']  	   = $this->order_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['iteminfo']       = $this->order_model->customerorder($orderid);
+		$data['billinfo']	   = $this->order_model->billinfo($orderid);
+		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+		$data['taxinfos'] = $this->taxchecking();
+		$data['module'] = "ordermanage";
+		$data['page']   = "updateorderlist";
+		$this->load->view('ordermanage/updateorderlist', $data);
+	}
+	
 	public function posaddtocart()
 	{
 		$this->permission->method('ordermanage', 'read')->redirect();
