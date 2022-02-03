@@ -386,6 +386,7 @@
 
                                                 if ($item->isupdate == 1) {
                                                     $color = "#DCF3DE";
+                                                    $prefix = "(+) ";
                                                 }
                                                 //$color = "#FCFBEA";
                                                 if (!empty($iteminfo->color_category_grid)) {

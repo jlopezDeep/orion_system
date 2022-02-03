@@ -100,6 +100,7 @@
           }
           if ($item->isupdate == 1) {
             $color = "#DCF3DE";
+            $prefix = "(+) ";
           }
           if (!empty($iteminfor->color_category_grid)) {
             $color = $iteminfor->color_category_grid . ";color:white";
